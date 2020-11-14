@@ -1,9 +1,8 @@
 /*eslint-disable*/
 import React from "react";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
+
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,7 +14,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { Apps, CloudDownload } from "@material-ui/icons";
 
 // core components
-import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
@@ -24,6 +22,9 @@ const useStyles = makeStyles(styles);
 
 export default function HeaderLinks(props) {
   const classes = useStyles();
+  function manageRoute(e){
+    props.history.push(e);
+  };
   return (
     <List className={classes.list}>
       
@@ -39,14 +40,30 @@ export default function HeaderLinks(props) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Link to="/login-page">
           <Button
             color="transparent"
+            onClick={e => manageRoute('/login-page')}
             className={classes.navLink}
           >
             Login
           </Button>
-        </Link>
+      </ListItem>
+      <ListItem className={classes.listItem}>
+        <Tooltip
+          id="instagram-youtube"
+          title="Follow us on youtube"
+          placement={window.innerWidth > 959 ? "top" : "left"}
+          classes={{ tooltip: classes.tooltip }}
+        >
+          <Button
+            color="transparent"
+            href="https://www.youtube.com/channel/UCfrnbTW8xA04ddtN4AthRfg?view_as=subscriber"
+            target="_blank"
+            className={classes.navLink}
+          >
+            <i className={classes.socialIcons + " fab fa-youtube"} />
+          </Button>
+        </Tooltip>
       </ListItem>
       <ListItem className={classes.listItem}>
         {/*<Tooltip title="Delete">
@@ -61,7 +78,7 @@ export default function HeaderLinks(props) {
           classes={{ tooltip: classes.tooltip }}
         >
           <Button
-            href="https://twitter.com/CreativeTim?ref=creativetim"
+            href="https://twitter.com/BearlyJoking"
             target="_blank"
             color="transparent"
             className={classes.navLink}
@@ -79,7 +96,7 @@ export default function HeaderLinks(props) {
         >
           <Button
             color="transparent"
-            href="https://www.facebook.com/CreativeTim?ref=creativetim"
+            href="https://www.facebook.com/Bearlyjoking"
             target="_blank"
             className={classes.navLink}
           >
@@ -96,7 +113,7 @@ export default function HeaderLinks(props) {
         >
           <Button
             color="transparent"
-            href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+            href="https://www.instagram.com/bearlyjoking/"
             target="_blank"
             className={classes.navLink}
           >
