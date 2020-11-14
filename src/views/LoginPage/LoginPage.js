@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import { Auth } from "aws-amplify";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -18,6 +20,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import constants from "utils/constants.js";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
@@ -26,18 +29,37 @@ import image from "assets/img/bg7.jpg";
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
-  const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
+  const [cardAnimaton, setCardAnimation] = useState("cardHidden");
   setTimeout(function() {
     setCardAnimation("");
   }, 700);
   const classes = useStyles();
   const { ...rest } = props;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    console.log('props', props);
+    try {
+      
+      const logged = await Auth.signIn(email, password);
+      alert("Logged in");
+      props.history.push('/')
+    } catch (e) {
+      alert(e.message);
+    }
+  }
   return (
     <div>
       <Header
         absolute
         color="transparent"
-        brand="Material Kit React"
+        brand={constants.full_company_name}
         rightLinks={<HeaderLinks />}
         {...rest}
       />
@@ -88,12 +110,15 @@ export default function LoginPage(props) {
                     </div>
                     */}
                   </CardHeader>
-                  <p className={classes.divider}>Or Be Classical</p>
+                  {/* <p className={classes.divider}>Or Be Classical</p> */}
                   <CardBody>
                     
                     <CustomInput
                       labelText="Email..."
+                      name="email"
+                      value={email}
                       id="email"
+                      onChange={e => setEmail(e.target.value)}
                       formControlProps={{
                         fullWidth: true
                       }}
@@ -109,6 +134,7 @@ export default function LoginPage(props) {
                     <CustomInput
                       labelText="Password"
                       id="pass"
+                      onChange={e => setPassword(e.target.value)}
                       formControlProps={{
                         fullWidth: true
                       }}
@@ -126,7 +152,7 @@ export default function LoginPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg">
+                    <Button simple color="primary" size="lg" onClick={e => handleSubmit(e)}>
                       Submit
                     </Button>
                   </CardFooter>
