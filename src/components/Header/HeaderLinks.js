@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, {useEffect} from "react";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
 
@@ -25,6 +25,9 @@ export default function HeaderLinks(props) {
   function manageRoute(e){
     props.history.push(e);
   };
+  useEffect(() => {
+    console.log(props)
+  }, [props]);
   return (
     <List className={classes.list}>
       

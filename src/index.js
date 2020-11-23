@@ -8,6 +8,7 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 // pages for this product
 import Components from "views/Components/Components.js";
 import Home from "views/Home/HomePage.js";
+import Dashboard from "views/Dashboard/DashboardPage";
 
 // import LandingPage from "views/LandingPage/LandingPage.js";
 import ProfilePage from "views/ProfilePage/ProfilePage.js";
@@ -49,6 +50,7 @@ ReactDOM.render(
       <Route path="/landing-page" component={Components} />
       <Route path="/profile-page" component={ProfilePage} />
       <Route path="/login-page" component={LoginPage} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/" component={Home} />
     </Switch>
   </Router>,

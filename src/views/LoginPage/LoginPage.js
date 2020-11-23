@@ -48,9 +48,29 @@ export default function LoginPage(props) {
     try {
       
       const logged = await Auth.signIn(email, password);
+      
       alert("Logged in");
-      props.history.push('/')
+      console.log("logged", logged);
+      if (logged.challengeName === 'NEW_PASSWORD_REQUIRED') {
+        const {requiredAttributes} = logged.challengeParam; // the array of required attributes, e.g ['email', 'phone_number']
+        // You need to get the new password and required attributes from the UI inputs
+        // and then trigger the following function with a button click
+        // For example, the email and phone_number are required attributes
+        // const {username, email} = getInfoFromUserInput();
+        const loggedUser = await Auth.completeNewPassword(
+            logged,              // the Cognito User Object
+            "Passw0rd!",       // the new password
+            // OPTIONAL, the required attributes
+            {
+                email
+            }
+        );
+    } 
+      const cred = await Auth.currentUserCredentials();
+      console.log("cred", cred);
+      props.history.push('/dashboard')
     } catch (e) {
+      console.log("error", e);
       alert(e.message);
     }
   }

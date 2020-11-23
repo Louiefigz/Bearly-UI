@@ -33,7 +33,7 @@ export default function HomePage(props) {
         color="transparent"
         routes={dashboardRoutes}
         brand={constants.full_company_name}
-        rightLinks={<HeaderLinks />}
+        rightLinks={<HeaderLinks {...rest}/>}
         fixed
         changeColorOnScroll={{
           height: 400,

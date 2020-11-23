@@ -10,6 +10,7 @@
     "aws-amplify": "^3.3.8",
     "classnames": "2.2.6",
     "history": "4.10.1",
+    "material-ui-dropzone": "^3.5.0",
     "moment": "2.26.0",
     "node-sass": "4.14.1",
     "nouislider": "14.5.0",
@@ -38,7 +39,7 @@
     "typescript": "3.9.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --no-cache",
     "build": "react-scripts build && gulp licenses",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

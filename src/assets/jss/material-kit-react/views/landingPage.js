@@ -30,6 +30,21 @@ const landingPageStyle = {
     borderRadius: "6px",
     boxShadow:
       "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
+  },
+  navbar: {
+    marginBottom: "-20px",
+    zIndex: "100",
+    position: "relative",
+    overflow: "hidden",
+    "& header": {
+      borderRadius: "0"
+    }
+  },
+  navigation: {
+    backgroundPosition: "center center",
+    backgroundSize: "cover",
+    marginTop: "0",
+    minHeight: "98px"
   }
 };
 
