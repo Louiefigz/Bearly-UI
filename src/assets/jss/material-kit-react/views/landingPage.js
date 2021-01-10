@@ -6,6 +6,11 @@ const landingPageStyle = {
     color: "#FFFFFF",
     ...container
   },
+  container2: {
+    zIndex: "12",
+    color: "black",
+    ...container
+  },
   title: {
     ...title,
     display: "inline-block",
@@ -45,6 +50,20 @@ const landingPageStyle = {
     backgroundSize: "cover",
     marginTop: "0",
     minHeight: "98px"
+  },
+  imgFluid: {
+    maxWidth: "100%",
+    height: "auto"
+  },
+  imgRounded: {
+    borderRadius: "6px !important"
+  },
+  section: {
+    padding: "70px 0"
+  },
+  section2: {
+    paddingBottom: "30px",
+    color: "black"
   }
 };
 

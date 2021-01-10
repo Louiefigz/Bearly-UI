@@ -13,6 +13,13 @@ const exampleStyle = {
   ...imagesStyle,
   link: {
     textDecoration: "none"
+  },
+  imgFluid: {
+    maxWidth: "100%",
+    height: "auto"
+  },
+  imgRounded: {
+    borderRadius: "6px !important"
   }
 };
 

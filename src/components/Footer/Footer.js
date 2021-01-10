@@ -28,7 +28,7 @@ export default function Footer(props) {
   });
   return (
     <footer className={footerClasses}>
-      <div className={classes.container}>
+      {/* <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
@@ -81,7 +81,7 @@ export default function Footer(props) {
           </a>{" "}
           for a better web.
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 }
